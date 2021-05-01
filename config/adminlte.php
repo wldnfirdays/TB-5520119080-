@@ -224,11 +224,11 @@ return [
     */
 
     'menu' => [
-            // [
-            //     'text' => 'search',
-            //     'search' => true,
-            //     'topnav' => true,
-            // ],
+            [
+                'text' => 'search',
+                'search' => true,
+                'topnav' => true,
+            ],
             [
                 'text' => 'Dashboard',
                 'url'  => 'admin/blog',
@@ -264,12 +264,12 @@ return [
                 'submenu' => [
                     [
                         'text' => 'Laporan Barang Masuk',
-                        'url'  => 'admin/laporan/masuk',
+                        'url'  => 'masuk',
                         'icon' => 'fas fa-sign-in-alt',
                     ],
                     [
                         'text'    => 'Laporan Barang Keluar',
-                        'url'     => 'admin/laporan/keluar',
+                        'url'     => 'keluar',
                         'icon' => 'fas fa-sign-out-alt',
                     ],
                 ],

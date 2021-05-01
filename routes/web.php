@@ -25,6 +25,11 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//Admin Route
+Route::get('admin/home', [AdminController::class, 'index'])
+    ->name('admin.home')
+    ->middleware('is_admin');
+
 // pengelolaan Brand
 Route::get('/brand', [App\Http\Controllers\BrandController::class, 'index'])->name('brand');
 Route::get('/ajax/dataBrand/{id}', [App\Http\Controllers\BrandController::class, 'getDataBrand']);
@@ -58,3 +63,9 @@ Route::middleware('is_admin')->prefix('admin')->group(function(){
 
 
 // PENGOLOLAAN BRANDS
+
+// pengelolaan Barang Masuk
+Route::get('/masuk', [App\Http\Controllers\MasukController::class, 'index'])->name('masuk');
+
+// pengelolaan Barang Keluar
+Route::get('/keluar', [App\Http\Controllers\KeluarController::class, 'index'])->name('keluar');

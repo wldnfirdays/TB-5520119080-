@@ -41,6 +41,13 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
+        $input = $request->all();
+
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+        
         if (auth()->attempt(array('email' => $request->get('email'), 'password' => $request->get('password')))) {
             if (auth()->user()->roles_id == 1) {
                 return redirect()->route('admin.home');

@@ -22,6 +22,6 @@ class isAdmin
             return $next($request);
         }
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with('error','Anda tidak memiliki akses sebagai admin');
     }
 }

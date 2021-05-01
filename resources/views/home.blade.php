@@ -14,29 +14,25 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                    @if ($user->roles_id==1)
-                    Your loged as admin
-
-                    @else ($user->roles_id ==2)
-                    Your loged as user
-                    <!-- <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div> -->
+                @if($user->roles_id == 1)
+                        Anda Login Sebagai Admin
+                    @else
+                        Anda Login Sebagai User
                     @endif
-
-
                 </div>
             </div>
         </div>
     </div>
 </div>
-@endsection
+@stop
+
 @section('footer')
-<div class="float-right d-none d-sm-block">
-    <b>Version</b> 1.0.0
-</div>
-<strong>CopyRight &copy; {{date('Y')}}
-    <a href="#" target="_blank">warungku.storage</a>.</strong> All Right reserved
+    <div class="float-right d-none d-sm-block">
+        <b>Version</b> 1.0.0
+    </div>
+    <strong>CopyRight &copy; {{date('Y')}}
+    <a href="http://ft.unsur.ac.id/" target="_blank">Fakultas Teknik,
+    Universitas Suryakancana</a>.</strong> All Right reserved
 @stop
 
 @section('css')
