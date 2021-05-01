@@ -54,15 +54,10 @@ Route::delete('/product/delete', [App\Http\Controllers\ProductController::class,
 // Route::get('/admin/home', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.home')->middleware('is_admin');
 
 Route::middleware('is_admin')->prefix('admin')->group(function(){
-    Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.home');
+Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.home');
 });
 
-// Route::middleware('is_user')->prefix('user')->group(function(){
-
-// });
-
-
-// PENGOLOLAAN BRANDS
+// Route::middleware('is_user')->prefix('user')->group(function(){});
 
 // pengelolaan Barang Masuk
 Route::get('/masuk', [App\Http\Controllers\MasukController::class, 'index'])->name('masuk');

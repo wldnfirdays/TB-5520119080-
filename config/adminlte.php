@@ -231,7 +231,7 @@ return [
             ],
             [
                 'text' => 'Dashboard',
-                'url'  => 'admin/blog',
+                'url'  => 'home',
                 'icon' => 'fas fa-tachometer-alt',
             ],
 

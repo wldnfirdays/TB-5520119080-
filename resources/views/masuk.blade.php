@@ -14,7 +14,7 @@
                     <div class="card-header">{{ __('Laporan Barang Masuk') }}</div>
 
                     <div class="card-body">
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#tambahBrandModal"><i class="fa fa-plus"></i>Tambah Data</button>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#tambahMasukModal"><i class="fa fa-plus"></i>Tambah Data</button>
                         <hr/>
                         <table id="table-data" class="table table-borderer">
                             <thead>
