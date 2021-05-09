@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Masuk;
+use PDF;
+
 use Illuminate\Support\Facades\Storage;
 
 class MasukController extends Controller
@@ -18,64 +20,16 @@ class MasukController extends Controller
     {
         $user = Auth::user();
         $masuks = masuk::all();
-        return view('masuk', compact('user', 'masuks'));
+        
+        return view('masuk', compact('masuks'));
     }
 
-    public function submit_masuk(Request $req){
-        $masuk = new Masuk;
-
-        $masuk->name = $req->get('name');
-        $masuk->description = $req->get('description');
-
-        $masuk->save();
-
-        $notification = array(
-            'message' => 'Data Merek berhasil ditambahkan',
-            'alert-type' => 'success'
-        );
-
-        return redirect()->route('masuk')->with($notification);
-    }
-
-
-    // ajax prosess
-    public function getDataMasuk($id)
+    public function print_masuk()
     {
-        $masuk = Masuk::find($id);
-
-        return response()->json($masuk);
+        $masuks = masuk::all();
+        $pdf = PDF::loadview('print_masuk', ['masuks' => $masuks]);
+        return $pdf->download('Laporan_Barang_Masuk.pdf');
     }
 
-    // update masuk
-    public function update_masuk(Request $req)
-    {
-        $masuk = Masuk::find($req->get('id'));
-
-        $masuk->name = $req->get('name');
-        $masuk->description = $req->get('description');
-
-        $masuk->save();
-
-        $notification = array(
-            'message' => 'Data Merek berhasil diubah',
-            'alert-type' => 'success'
-        );
-
-        return redirect()->route('masuk')->with($notification);
-    }
-
-    public function delete_masuk(Request $req)
-    {
-        $masuk = masuk::find($req->get('id'));
-
-        $masuk->delete();
-
-        $notification = array(
-            'message' => 'Data Merek berhasil dihapus',
-            'alert-type' => 'warning'
-        );
-
-        return redirect()->route('masuk')->with($notification);
-    }
 }
 

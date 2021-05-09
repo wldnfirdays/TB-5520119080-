@@ -234,7 +234,12 @@ return [
                 'url'  => 'home',
                 'icon' => 'fas fa-tachometer-alt',
             ],
-
+            [
+                'text'        => 'User',
+                'url'         => 'admin/user',
+                'icon'        => 'fas fa-fw fa-user',
+                'can'         => 'isAdmin',
+            ],
             [
                 'text' => 'Kategori Barang',
                 'url'  => 'categorie',

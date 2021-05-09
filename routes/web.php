@@ -51,24 +51,19 @@ Route::post('/product', [App\Http\Controllers\ProductController::class, 'submit_
 Route::patch('/product/update', [App\Http\Controllers\ProductController::class, 'update_product'])->name('product.update');
 Route::delete('/product/delete', [App\Http\Controllers\ProductController::class, 'delete_product'])->name('product.delete');
 
-// Route::get('/admin/home', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.home')->middleware('is_admin');
+
+// pengelolaan User
+Route::middleware('is_admin')->prefix('admin')->group(function(){
+    Route::get('/user', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.user');
+    Route::get('/user', [App\Http\Controllers\AdminController::class, 'user'])->name('admin.user');
+    Route::post('/user', [App\Http\Controllers\AdminController::class, 'submit_user'])->name('admin.user.submit');
+    Route::patch('/user/update', [App\Http\Controllers\AdminController::class, 'update_user'])->name('admin.user.update');
+});
 
 Route::middleware('is_admin')->prefix('admin')->group(function(){
 Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.home');
 });
 
-// Route::middleware('is_user')->prefix('user')->group(function(){});
-
-// pengelolaan Barang Masuk
-Route::get('/masuk', [App\Http\Controllers\MasukController::class, 'index'])->name('masuk');
-Route::get('/ajax/dataMasuk/{id}', [App\Http\Controllers\MasukController::class, 'getDataMasuk']);
-Route::post('/masuk', [App\Http\Controllers\MasukController::class, 'submit_masuk'])->name('masuk.submit');
-Route::patch('/masuk/update', [App\Http\Controllers\MasukController::class, 'update_masuk'])->name('masuk.update');
-Route::delete('/masuk/delete', [App\Http\Controllers\MasukController::class, 'delete_masuk'])->name('masuk.delete');
-
-// pengelolaan Barang Keluar
-Route::get('/keluar', [App\Http\Controllers\KeluarController::class, 'index'])->name('keluar');
-Route::get('/ajax/dataKeluar/{id}', [App\Http\Controllers\KeluarController::class, 'getDataKeluar']);
-Route::post('/keluar', [App\Http\Controllers\KeluarController::class, 'submit_keluar'])->name('keluar.submit');
-Route::patch('/keluar/update', [App\Http\Controllers\KeluarController::class, 'update_keluar'])->name('keluar.update');
-Route::delete('/keluar/delete', [App\Http\Controllers\KeluarController::class, 'delete_keluar'])->name('keluar.delete');
+Route::get('/masuk', [App\Http\Controllers\MasukController::class, 'index'])->name('admin.masuks')->middleware('is_admin');
+Route::get('/print_masuks', [App\Http\Controllers\MasukController::class, 'print_masuk'])->name('admin.print_masuk')->middleware('is_admin');
+Route::get('/keluar', [App\Http\Controllers\KeluarController::class, 'index'])->name('admin.keluars')->middleware('is_admin');

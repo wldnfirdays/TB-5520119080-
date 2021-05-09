@@ -15,8 +15,9 @@ class CreateMasuksTable extends Migration
     {
         Schema::create('masuks', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_product');
             $table->string('name');
-            $table->string('description');
+            $table->integer('qty');
             $table->timestamps();
         });
     }

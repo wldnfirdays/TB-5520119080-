@@ -15,8 +15,8 @@ class CreateKeluarsTable extends Migration
     {
         Schema::create('keluars', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description');
+            $table->integer('id_product');
+            $table->integer('qty');
             $table->timestamps();
         });
     }
