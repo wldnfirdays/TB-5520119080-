@@ -60,6 +60,9 @@ Route::middleware('is_admin')->prefix('admin')->group(function(){
     Route::patch('/user/update', [App\Http\Controllers\AdminController::class, 'update_user'])->name('admin.user.update');
 });
 
+Route::get('/transaksi', [App\Http\Controllers\TransaksiController::class, 'index'])->name('transaksi');
+Route::post('/transaksi', [App\Http\Controllers\TransaksiController::class, 'submit_transaksi'])->name('transaksi.submit');
+
 Route::middleware('is_admin')->prefix('admin')->group(function(){
 Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.home');
 });

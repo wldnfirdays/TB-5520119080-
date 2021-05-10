@@ -261,6 +261,12 @@ return [
                 'can' => 'isAdmin',
                 
             ],
+            [
+                'text'        => 'Transaksi',
+                'url'         => 'transaksi',
+                'icon'        => 'fas fa-fw fa-exchange-alt',
+                'can'         => ['isUser','isAdmin'],
+            ],
 
             [
                 'text'    => 'Laporan',
