@@ -14,6 +14,9 @@
                     <!-- <div class="card-header">{{ __('  ') }}</div> -->
 
                     <div class="card-body">
+                        <div class="btn-group mb-5" role="group" aria-label="Basic example"> <a href="{{ route('admin.masuks.export') }}" class="btn btn-info" target="_blank">Export</a>
+                        </button>
+                        </div>
                     <a href="{{ route('admin.print_masuk') }}" target="_blank" class="btn btn-secondary float-right"><i class="fa fa-print"></i> Cetak PDF</a>
                         <hr/>
                         <hr/>

@@ -63,6 +63,8 @@ Route::middleware('is_admin')->prefix('admin')->group(function(){
 Route::get('/transaksi', [App\Http\Controllers\TransaksiController::class, 'index'])->name('transaksi');
 Route::post('/transaksi', [App\Http\Controllers\TransaksiController::class, 'submit_transaksi'])->name('transaksi.submit');
 
+Route::get('admin/books/export', [App\Http\Controllers\MasukController::class, 'export'])->name('admin.masuk.export')->middleware('is_admin');
+
 Route::middleware('is_admin')->prefix('admin')->group(function(){
 Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.home');
 });
@@ -70,3 +72,8 @@ Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])->nam
 Route::get('/masuk', [App\Http\Controllers\MasukController::class, 'index'])->name('admin.masuks')->middleware('is_admin');
 Route::get('/print_masuks', [App\Http\Controllers\MasukController::class, 'print_masuk'])->name('admin.print_masuk')->middleware('is_admin');
 Route::get('/keluar', [App\Http\Controllers\KeluarController::class, 'index'])->name('admin.keluars')->middleware('is_admin');
+
+
+Route::get('admin/books/export', [App\Http\Controllers\MasukController::class, 'export'])
+    ->name('admin.masuks.export')
+    ->middleware('is_admin');

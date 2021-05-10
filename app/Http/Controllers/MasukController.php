@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Masuk;
 use PDF;
+use App\Exports\MasuksExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 use Illuminate\Support\Facades\Storage;
 
@@ -31,5 +33,9 @@ class MasukController extends Controller
         return $pdf->download('Laporan_Barang_Masuk.pdf');
     }
 
+    public function export()
+    {
+        return Excel::download(new MasuksExport, 'books.xlsx');
+    }
 }
 
